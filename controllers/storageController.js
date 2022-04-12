@@ -4,9 +4,11 @@ const Storage = require('../models/nosql/Storage')
 const { handleHttpError } = require('../utils/handleErrors')
 
 /**
- * get all the storage data from the db
+ * Get all the storages data from the db
  * @param {*} req
  * @param {*} res
+ * @returns
+ * Data from the storages.
  */
 const getAllStorages = async (req, res) => {
   try {
@@ -22,9 +24,12 @@ const getAllStorages = async (req, res) => {
 }
 
 /**
- * get just one storage from the db
+ * Get just one storage from the db.
+ * Select the storage with an id provided on the url params.
  * @param {*} req
  * @param {*} res
+ * @returns
+ * The storage data from the db.
  */
 const getStorage = async (req, res) => {
   const { idStorage } = matchedData(req)
@@ -37,17 +42,18 @@ const getStorage = async (req, res) => {
   } catch (error) {
     return handleHttpError({
       res,
-      messageError: 'Error getting the storage storages. ' + error.message,
+      messageError: 'Error getting the storage. ' + error.message,
       statusCode: 400
     })
   }
 }
 
 /**
- * upload name's file that upload to the server with multer on the db
+ * Upload name's file that upload to the server with multer on the db
  * @param {*} req
  * @param {*} res
  * @returns
+ * The new storage data created on the db.
  */
 const createStorage = async (req, res) => {
   const { file } = req
@@ -67,9 +73,11 @@ const createStorage = async (req, res) => {
 }
 
 /**
- * delete a storage from the db by id
+ * Delete a storage from the db by id.
  * @param {*} req
  * @param {*} res
+ * @returns
+ * Deleted storage data.
  */
 const deleteStorage = async (req, res) => {
   const { idStorage } = matchedData(req)

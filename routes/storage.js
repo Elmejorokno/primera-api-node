@@ -6,11 +6,11 @@ const {
   getStorage,
   deleteStorage
 } = require('../controllers/storageController')
-const checkUploadFile = require('../middlewares/checkUploadFile')
+const uploadFileServer = require('../utils/handleUploadFile')
 const { validatorIdStorage } = require('../validators/storageValidators')
 
 router.get('/', getAllStorages)
-router.post('/', checkUploadFile.single('myfile'), createStorage)
+router.post('/', uploadFileServer.single('myfile'), createStorage)
 router.get('/:idStorage', validatorIdStorage, getStorage)
 router.delete('/:idStorage', validatorIdStorage, deleteStorage)
 

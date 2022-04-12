@@ -12,6 +12,10 @@ const storage = multer.diskStorage({
   }
 })
 
-const checkUploadFile = multer({ storage })
+/**
+ * The multer object that provided all the functions of this dependency.
+ * `uploadFileServer` comes with a customize options.
+ */
+const uploadFileServer = multer({ storage })
 
-module.exports = checkUploadFile
+module.exports = uploadFileServer

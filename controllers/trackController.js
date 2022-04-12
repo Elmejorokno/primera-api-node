@@ -3,9 +3,11 @@ const Track = require('../models/nosql/Track')
 const { handleHttpError } = require('../utils/handleErrors')
 
 /**
- * get all tracks from the db
+ * Get all tracks from the db.
  * @param {*} req
  * @param {*} res
+ * @returns
+ * All tracks from the db.
  */
 const getAllTracks = async (req, res) => {
   try {
@@ -21,9 +23,12 @@ const getAllTracks = async (req, res) => {
 }
 
 /**
- * get just one track from the db
+ * Get just one track from the db.
+ * Select the track for a id provided in the url params. Called idTrack.
  * @param {*} req
  * @param {*} res
+ * @returns
+ * The data track matched.
  */
 const getTrack = async (req, res) => {
   const { idTrack } = matchedData(req)
@@ -43,9 +48,11 @@ const getTrack = async (req, res) => {
 }
 
 /**
- * create a track and insert to the db
+ * Create a track and insert to the db.
  * @param {*} req
  * @param {*} res
+ * @returns
+ * The created track.
  */
 const createTrack = async (req, res) => {
   const body = matchedData(req) //return data clean and that matched with the validation
@@ -62,9 +69,11 @@ const createTrack = async (req, res) => {
 }
 
 /**
- * update a track and reload to the db
+ * Update a track and reload to the db.
  * @param {*} req
  * @param {*} res
+ * @returns
+ * The updated track.
  */
 const updateTrack = async (req, res) => {
   const { idTrack, ...body } = matchedData(req)
@@ -83,9 +92,11 @@ const updateTrack = async (req, res) => {
 }
 
 /**
- * delete a track from the db by idb
+ * Delete a track from the db by id.
  * @param {*} req
  * @param {*} res
+ * @returns
+ * The deleted track.
  */
 const deleteTrack = async (req, res) => {
   const { idTrack } = matchedData(req)
